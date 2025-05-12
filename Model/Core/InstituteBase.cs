@@ -3,7 +3,7 @@ namespace Model.Core;
 // Абстрактный класс института, имеющий массив различных программ обучения.
 public abstract class InstituteBase
 {
-    private readonly List<EducationalProgram> _educationalPrograms;
+    private readonly List<EducationalProgram> _educationalPrograms = new List<EducationalProgram>();
     
     public string Name { get; private set; }
     public IReadOnlyList<EducationalProgram> EducationalPrograms => _educationalPrograms.AsReadOnly();

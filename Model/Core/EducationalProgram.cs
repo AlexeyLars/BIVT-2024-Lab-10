@@ -3,7 +3,7 @@
 // Класс, описывающий образовательную программу: название и массив дисциплин.
 public class EducationalProgram
 {
-    private readonly List<Subject> _subjects;
+    private readonly List<Subject> _subjects = new List<Subject>();
     
     public string Name {get; private set;}
     public IReadOnlyList<Subject> Subjects => _subjects.AsReadOnly();
