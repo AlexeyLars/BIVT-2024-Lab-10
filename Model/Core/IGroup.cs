@@ -4,7 +4,7 @@
 public interface IGroup
 {
     void Enroll(Student student); // Зачисление нового студента
-    void Transfer(); // Перевод группы на новую программу
+    void Transfer(EducationalProgram newProgram); // Перевод группы на новую программу
     void Expel(Student student); // Отчисление студента
 }
 

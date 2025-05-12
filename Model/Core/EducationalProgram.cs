@@ -14,7 +14,7 @@ public class EducationalProgram
         // if(subjects == null) throw new ArgumentNullException("Educational program subjects cannot be null", nameof(subjects));
 
         Name = name;
-        if(subjects != null) subjects.AddRange(subjects);
+        if(subjects != null) _subjects.AddRange(subjects);
     }
 
     public void AddSubject(Subject subject)
