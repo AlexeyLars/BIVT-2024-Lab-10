@@ -16,6 +16,10 @@ public class EducationalProgram
         Name = name;
         if(subjects != null) subjects.AddRange(subjects);
     }
-    
-    // todo: add methods AddSubject (!), RemoveSubject (?)
+
+    public void AddSubject(Subject subject)
+    {
+        if(subject == null) throw new ArgumentNullException("Subject cannot be null", nameof(subject));
+        _subjects.Add(subject);
+    }
 }
