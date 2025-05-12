@@ -1,6 +1,8 @@
+using ArgumentNullException = System.ArgumentNullException;
+
 namespace Model.Core;
 
-public class StudentGroup : IGroup
+public partial class StudentGroup : IGroup
 {
     private readonly List<Student> _students = new List<Student>();
     
@@ -27,10 +29,12 @@ public class StudentGroup : IGroup
         _students.Remove(student);
     }
 
-    public void Transfer(EducationalProgram newProgram)
+    public void TransferStudent(Student student, IGroup newGroup)
     {
-        if(newProgram == null) throw new ArgumentNullException("New program cannot be null", nameof(newProgram));
-        if(ReferenceEquals(newProgram, EducationalProgram)) throw new ArgumentException("New program cannot be the same program", nameof(newProgram));
-        EducationalProgram = newProgram;
+        if(student == null) throw new ArgumentNullException("Student cannot be null", nameof(student));
+        if(newGroup == null) throw new ArgumentNullException("New group cannot be null", nameof(newGroup));
+        if(!_students.Contains(student)) throw new ArgumentException("Student does not exist in this group", nameof(student));
+        newGroup.Enroll(student);
+        Expel(student);
     }
 }
