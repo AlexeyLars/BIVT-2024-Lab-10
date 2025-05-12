@@ -22,4 +22,10 @@ public class EducationalProgram
         if(subject == null) throw new ArgumentNullException("Subject cannot be null", nameof(subject));
         _subjects.Add(subject);
     }
+
+    public void RemoveSubject(Subject subject)
+    {
+        if(subject == null) throw new ArgumentNullException("Subject cannot be null", nameof(subject));
+        _subjects.Remove(subject);
+    }
 }
