@@ -1,4 +1,4 @@
-namespace Model;
+namespace Model.Data;
 
 public abstract class SerializerBase<T>
 {

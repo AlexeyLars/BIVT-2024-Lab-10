@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Model;
+namespace Model.Data;
 
 public class JsonSerializer<T> : SerializerBase<T>
 {
