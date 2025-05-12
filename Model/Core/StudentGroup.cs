@@ -8,11 +8,14 @@ public partial class StudentGroup : IGroup
     
     public IReadOnlyList<Student> Students => _students.AsReadOnly();
     public EducationalProgram EducationalProgram { get; private set; }
+    public InstituteBase Institute { get; private set; }
 
-    public StudentGroup(EducationalProgram educationalProgram, List<Student>? students = null)
+    public StudentGroup(EducationalProgram educationalProgram, InstituteBase institute, List<Student>? students = null)
     {
         EducationalProgram = educationalProgram ?? 
                              throw new ArgumentNullException("Educational program cannot be null", nameof(educationalProgram));
+        Institute = institute ??
+                    throw new ArgumentNullException("Institute cannot be null", nameof(institute));
         if(students != null) _students.AddRange(students);
     }
 
