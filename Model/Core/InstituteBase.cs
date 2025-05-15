@@ -18,14 +18,14 @@ public abstract class InstituteBase
     public void AddProgram(EducationalProgram program)
     {
         if(program == null) throw new ArgumentNullException("Educational program cannot be null", nameof(program));
-        if(_educationalPrograms.Contains(program)) throw new InvalidOperationException("Institute's programs already contains an educational program");
+        if(_educationalPrograms.Contains(program)) throw new ArgumentException("Institute's programs already contains an educational program");
         _educationalPrograms.Add(program);
     }
 
     public void RemoveProgram(EducationalProgram program)
     {
         if(program == null) throw new ArgumentNullException("Educational program cannot be null", nameof(program));
-        if(!_educationalPrograms.Contains(program)) throw new InvalidOperationException("Institute's program does not contain an educational program");
+        if(!_educationalPrograms.Contains(program)) throw new ArgumentException("Institute's program does not contain an educational program");
         _educationalPrograms.Remove(program);
     }
 }

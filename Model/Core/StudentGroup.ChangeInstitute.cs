@@ -6,8 +6,8 @@ public partial class StudentGroup
     {
         if(newProgram == null) throw new ArgumentNullException("New educational program cannot be null", nameof(newProgram));
         if(newInstitute == null) throw new ArgumentNullException("Institute cannot be null", nameof(newInstitute));
-        if(ReferenceEquals(newInstitute, Institute)) throw new InvalidOperationException("New program cannot be the same as the current");
-        if(!newInstitute.EducationalPrograms.Contains(newProgram)) throw new InvalidOperationException("New institute does not contains the specified educational program");
+        if(ReferenceEquals(newInstitute, Institute)) throw new ArgumentException("New program cannot be the same as the current");
+        if(!newInstitute.EducationalPrograms.Contains(newProgram)) throw new ArgumentException("New institute does not contains the specified educational program");
         
         EducationalProgram = newProgram;
         Institute = newInstitute;
