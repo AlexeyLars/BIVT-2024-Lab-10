@@ -38,8 +38,17 @@ public partial class StudentGroup : IGroup
         if(student == null) throw new ArgumentNullException("Student cannot be null", nameof(student));
         if(newGroup == null) throw new ArgumentNullException("New group cannot be null", nameof(newGroup));
         if(!_students.Contains(student)) throw new ArgumentException("Student does not exist in this group", nameof(student));
-        
-        
+        if (newGroup is StudentGroup newStudentGroup)
+        {
+            // Пока не реализован функционал перевода в этих особых слуачаях - будем кидать эксепшены
+            if(newStudentGroup.Institute.GetType() != Institute.GetType()) 
+                throw new ArgumentException(
+                    "New group institute has to be the same as current group institute", nameof(newGroup));
+            if (newStudentGroup.EducationalProgram.GetType() != EducationalProgram.GetType())
+                throw new ArgumentException(
+                    "New group educational program has to be the same as current group educational program",
+                    nameof(newGroup));
+        }
         newGroup.Enroll(student);
         Expel(student);
     }
