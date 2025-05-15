@@ -8,7 +8,7 @@ public class EducationalProgram
     public string Name {get; private set;}
     public IReadOnlyList<Subject> Subjects => _subjects.AsReadOnly();
 
-    public EducationalProgram(string name, List<Subject> subjects)
+    public EducationalProgram(string name, List<Subject> subjects = null)
     {
         if(string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("Educational program name cannot be null or empty", nameof(name));
         // if(subjects == null) throw new ArgumentNullException("Educational program subjects cannot be null", nameof(subjects));

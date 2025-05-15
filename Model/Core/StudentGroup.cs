@@ -22,13 +22,14 @@ public partial class StudentGroup : IGroup
     public void Enroll(Student student)
     {
         if(student == null) throw new ArgumentNullException("Student cannot be null", nameof(student));
-        if(_students.Any(s => s.Id == student.Id)) throw new ArgumentException("Student already exists in group", nameof(student));
+        if(_students.Contains(student)) throw new ArgumentException("Student already exists in group", nameof(student));
         _students.Add(student);
     }
 
     public void Expel(Student student)
     {
         if(student == null) throw new ArgumentNullException("Student cannot be null", nameof(student));
+        if(!_students.Contains(student)) throw new ArgumentException("Student does not exist in group", nameof(student));
         _students.Remove(student);
     }
 
@@ -37,6 +38,8 @@ public partial class StudentGroup : IGroup
         if(student == null) throw new ArgumentNullException("Student cannot be null", nameof(student));
         if(newGroup == null) throw new ArgumentNullException("New group cannot be null", nameof(newGroup));
         if(!_students.Contains(student)) throw new ArgumentException("Student does not exist in this group", nameof(student));
+        
+        
         newGroup.Enroll(student);
         Expel(student);
     }
