@@ -4,6 +4,8 @@ namespace Model.Core;
 
 public partial class StudentGroup : IGroup
 {
+    public Guid Id { get; }
+    
     private readonly List<Student> _students = new List<Student>();
     
     public IReadOnlyList<Student> Students => _students.AsReadOnly();
@@ -12,6 +14,7 @@ public partial class StudentGroup : IGroup
 
     public StudentGroup(EducationalProgram educationalProgram, InstituteBase institute, List<Student>? students = null)
     {
+        Id = Guid.NewGuid();
         EducationalProgram = educationalProgram ?? 
                              throw new ArgumentNullException("Educational program cannot be null", nameof(educationalProgram));
         Institute = institute ??
